@@ -7,7 +7,16 @@ export interface IKnife {
 }
 
 export class Knife {
-  name: string;
+
+  // TODO : Reusable placeholder image
+
+  name = '';
+  additionalImages = [];
+  primaryImage = {
+    storageRef: '',
+    url: '',
+    description: 'Knife image coming soon'
+  }
 }
 
 export interface IKnifeImage {
