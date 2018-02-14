@@ -1,5 +1,5 @@
-<mat-sidenav-container>
-  <mat-sidenav #sidenav (open)="closeStartButton.focus()">
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav position="start" (open)="closeStartButton.focus()">
     <!-- sidenav content -->
     <mat-toolbar color="primary" fxLayout="row">
       <h2>Navigation</h2>
@@ -18,37 +18,41 @@
   <!-- primary content -->
   <!-- <mat-toolbar color="primary" fxLayout="row">
   TODO : toolbar seems to fight against flex-layout -->
-  <mat-toolbar color="primary">
-    <button mat-button (click)="sidenav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
 
-    <span>
-      <!-- <mat-icon mat-svg-src="/images/cutleaf-logo.v2.svg" style="margin-right: 10px;"></mat-icon> -->
-      <img src="//res.cloudinary.com/cutleaf-studios/image/upload/logo/cutleaf-text.svg" alt="CutLeaf Logo Text">
-    </span>
+      <span>
+        <!-- <mat-icon mat-svg-src="/images/cutleaf-logo.v2.svg" style="margin-right: 10px;"></mat-icon> -->
+        <img src="//res.cloudinary.com/cutleaf-studios/image/upload/logo/cutleaf-text.svg" alt="CutLeaf Logo Text">
+      </span>
 
-    <span fxFlex="flex"></span>
+      <span fxFlex="flex"></span>
 
-    <mat-menu #loginMenu="matMenu">
-      <button mat-menu-item (click)="login()">Login</button>
-      <button mat-menu-item (click)="logout()">Logout</button>
-    </mat-menu>
+      <mat-menu #loginMenu="matMenu">
+        <button mat-menu-item (click)="login()" *ngIf="!(user | async)">Login</button>
+        <button mat-menu-item (click)="logout()" *ngIf="(user | async)">Logout</button>
+      </mat-menu>
 
-    <button mat-button [matMenuTriggerFor]="loginMenu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
+      <button mat-button [matMenuTriggerFor]="loginMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
 
-    <span fxHide fxShow.gt-sm>
-      <small>{{ (user | async)?.email }} </small>
-    </span>
-    <img *ngIf="(user | async)?.photoURL" src="{{ (user | async)?.photoURL }}" style="width:24px;height:24px;">
+      <ng-container *ngIf="user | async; let u">
+        <span fxHide fxShow.gt-sm>
+          <small>{{ u.email }} </small>
+        </span>
+        <img *ngIf="u.photoURL" src="{{ u.photoURL }}" style="width:24px;height:24px;">
+      </ng-container>
 
 
-  </mat-toolbar>
+    </mat-toolbar>
 
 
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 
 
 </mat-sidenav-container>

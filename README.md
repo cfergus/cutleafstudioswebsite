@@ -1,13 +1,8 @@
-# BladeSite
+# CutLeaf Studios Website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+This project is the source code backing the cutleafstudios.com website.
 
-
-## Notes
-
-See https://github.com/r-park/todo-angular2-firebase/blob/master/src/tasks/components/task-list.ts for firebase sample
-
-Use `ng serve`, not `firebase serve`
+The goal is to exercise Angular, Firebase, and related libraries.
 
 ## Development
 
