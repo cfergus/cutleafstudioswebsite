@@ -1,0 +1,18 @@
+<div *ngIf="(knife | async) as k">
+
+
+  <img src="{{k.primaryImage.url}}" alt="" width="100%">
+
+  <p>
+    {{ k.name }}
+  </p>
+
+  <p>Additional Images</p>
+  <div fxLayout="row" fxLayoutWrap
+      fxLayoutAlign="space-between start">
+    <div *ngFor="let additionalImage of k.additionalImages" fxFlex="30">
+      <img [src]="additionalImage.url" width="100%">
+    </div>
+  </div>
+
+</div>

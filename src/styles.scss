@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Prebuilt angular theme seems to work */
+/*@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';*/
+
+/* Custom Theme */
+/*@import '~./app/cutleaf-theme.scss';*/
+
+
+body {
+  font-family: Roboto;
+}
+
+todo {
+  background-color: orange;
+  font-style: italic;
+}

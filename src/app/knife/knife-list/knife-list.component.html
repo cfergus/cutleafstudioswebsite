@@ -1,0 +1,21 @@
+<div fxLayout="column"  fxLayout.gt-sm="row" fxLayoutWrap
+    fxLayoutAlign="space-between start">
+
+  <mat-card *ngFor="let knife of knives | async" fxFlex="100" class="knife-card"
+    [routerLink]="['/knives', knife.id ]"
+    >
+
+    <mat-card-header>
+      <mat-card-title>{{knife.name}}</mat-card-title>
+      <!-- <mat-card-subtitle>{{knife.general.shortDescription}}</mat-card-subtitle> -->
+    </mat-card-header>
+
+    <img mat-card-image [src]="knife.primaryImage.url">
+
+    <mat-card-content>
+      Info
+      <!-- Length : {{ knife.general.dimLength.magnitude }} -->
+      <!-- {{ knife.general.longDescription }} -->
+    </mat-card-content>
+  </mat-card>
+</div>

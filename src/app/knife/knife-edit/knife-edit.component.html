@@ -1,0 +1,91 @@
+<form #knifeEditForm [formGroup]="knifeForm" (ngSubmit)="updateKnife()" novalidate>
+
+
+  <!-- TODO : figure out how to wait for observable to return, loading otherwise -->
+  id : {{knifeId}}
+
+  <div class="knife-info" *ngIf="(knife | async) as k">
+
+    <div>
+      <mat-form-field>
+        <input matInput type="text" formControlName="name" placeholder="Name">
+      </mat-form-field>
+      <p class="error is-danger" [hidden]="knifeForm.get('name').valid">
+        Name is required
+      </p>
+
+      <div formGroupName="primaryImage">
+        <p>Primary Image</p>
+        <mat-form-field>
+          <input matInput type="text" formControlName="description" placeholder="Description">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="text" formControlName="url" placeholder="URL">
+        </mat-form-field>
+
+      </div>
+
+      <div formArrayName="additionalImages">
+        <div *ngFor="let additionalImage of additionalImages.controls; let i=index" [formGroupName]="i">
+          <p>Additional Image {{i + 1}}</p>
+          <mat-form-field>
+            <input matInput type="text" formControlName="description" placeholder="Description">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="text" formControlName="url" placeholder="URL">
+          </mat-form-field>
+          <button type="button" mat-button (click)="removeAdditionalImage( i )">Remove</button>
+        </div>
+
+      </div>
+      <button mat-button type="button" (click)="addAdditionalImage()">Add Additional Image</button>
+
+    </div>
+
+    <!-- <div>
+      <p>Form value:    {{ knifeForm.value | json}}</p>
+      <p>Form status:    {{ knifeForm.status | json}}</p>
+    </div> -->
+
+  </div>
+
+
+  <div class="progress-container spacing-container">
+    <progress
+      class="upload-progress"
+      [value]="uploadPercent$ | async"
+      max="100">
+    </progress>
+  </div>
+
+  <section class="spacing-container">
+    <label for="file">File:</label>
+    <input type="file" (change)="previewFile($event)" accept=".png,.jpg,.sketch" />
+  </section>
+
+  <!-- <section class="upload-bar spacing-container" *ngIf="!uploaded"> -->
+    <button (click)="uploadFile()" [disabled]="!(previewURL$ | async)">Upload</button>
+  <!-- </section> -->
+
+  <!-- <section class="delete-bar spacing-container" *ngIf="uploaded"> -->
+    <button (click)="deleteUpload()" [disabled]="!(uploadURL$ | async)"> Delete </button>
+  <!-- </section> -->
+
+  <div class="result spacing-container" *ngIf="uploadURL$ | async; let uploadSrc">
+    <a [href]="uploadSrc">Your link to your file!</a>
+  </div>
+
+  <section class="control-bar" *ngIf="uploadState$ | async; let state">
+    <button (click)="pauseUpload()" [disabled]="state === 'paused'"> Pause </button>
+    <button (click)="cancelUpload()" [disabled]="!(state === 'paused' || state === 'running')"> Cancel </button>
+    <button (click)="resumeUpload()" [disabled]="state === 'running'"> Resume </button>
+  </section>
+
+  <div class="preview" *ngIf="previewURL$ | async; let previewSrc">
+    <img [src]="previewSrc" />
+  </div>
+
+  <button mat-button [disabled]="knifeForm.pristine" type="submit">Edit Knife</button>
+  <button mat-button type="reset" (click)="revert()"
+            [disabled]="knifeForm.pristine" class="btn btn-danger">Revert</button>
+</form>
