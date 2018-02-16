@@ -6,7 +6,9 @@ import {
   MatInputModule,
   MatFormFieldModule,
   MatCardModule,
-  MatIconModule
+  MatIconModule,
+  MatProgressBarModule,
+  MatDividerModule
 } from '@angular/material';
 
 @NgModule({
@@ -15,14 +17,18 @@ import {
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressBarModule,
+    MatDividerModule
   ],
   exports: [
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressBarModule,
+    MatDividerModule
   ]
 })
 export class SharedMaterialModule { }

@@ -4,16 +4,7 @@
     <mat-form-field>
       <input matInput type="text" formControlName="name" placeholder="Name">
     </mat-form-field>
-    <div formGroupName="primaryImage">
-      <p>Primary Image</p>
-      <mat-form-field>
-        <input matInput type="text" formControlName="description" placeholder="Description">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="text" formControlName="url" placeholder="URL">
-      </mat-form-field>
-    </div>
-
+    
     <button mat-button type="submit" [disabled]="knifeForm.pristine || !canSubmit" >Create</button>
   </form>
 

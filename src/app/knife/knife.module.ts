@@ -12,6 +12,9 @@ import { KnifeDetailComponent } from './knife-detail/knife-detail.component';
 import { KnifeListComponent } from './knife-list/knife-list.component';
 import { KnifeCreateComponent } from './knife-create/knife-create.component';
 import { KnifeEditComponent } from './knife-edit/knife-edit.component';
+import { KnifeImageUploadComponent } from './knife-image-upload/knife-image-upload.component';
+
+// TODO : for faster loading, could isolate edit/create into its own module
 
 @NgModule({
   imports: [
@@ -25,7 +28,8 @@ import { KnifeEditComponent } from './knife-edit/knife-edit.component';
     KnifeListComponent,
     KnifeDetailComponent,
     KnifeCreateComponent,
-    KnifeEditComponent
+    KnifeEditComponent,
+    KnifeImageUploadComponent
   ]
 })
 export class KnifeModule { }

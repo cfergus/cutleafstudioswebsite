@@ -28,16 +28,6 @@ export class KnifeEditComponent implements OnInit, OnDestroy {
 
   knifeForm: FormGroup;
 
-  // Image upload
-  // See https://github.com/davideast/angularfire-storage/blob/master/src/app/app.component.ts for more info
-  previewURL$: Observable<any>;
-  file: Blob;
-  ref: AngularFireStorageReference;
-  task: AngularFireUploadTask;
-  uploadPercent$: Observable<number>;
-  uploadURL$: Observable<string>;
-  uploadState$: Observable<string>;
-
   constructor(
     private firestore: AngularFirestore,
     private fireStorage: AngularFireStorage,
@@ -56,7 +46,6 @@ export class KnifeEditComponent implements OnInit, OnDestroy {
       // TODO : Test invalid knife
       //  this.knifeDoc = this.firestore.doc<IKnife>( 'notaknife' );
 
-      // Do we need id for edits?: https://github.com/angular/angularfire2/blob/master/docs/firestore/documents.md#snapshotchanges
       this.knife = this.knifeDoc.valueChanges();
       this.buildForm();
     });
@@ -64,6 +53,7 @@ export class KnifeEditComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.routerParamSub$.unsubscribe();
+    // TODO : unsubscribe everything?
   }
 
   updateKnife() {
@@ -88,15 +78,8 @@ export class KnifeEditComponent implements OnInit, OnDestroy {
       name:    ['', Validators.required ],
       // description:  ['', Validators.required ],
       additionalImages: this.fb.array([
-        this.fb.group({
-          description: [''],
-          url: ['']
-        })
       ]),
-      primaryImage:    this.fb.group({
-        description: [''],
-        url: ['']
-      })
+      primaryImage:    this.initKnifeImageControl()
     });
     this.knife.subscribe(k => {
       this.knifeForm.patchValue(k);
@@ -108,64 +91,21 @@ export class KnifeEditComponent implements OnInit, OnDestroy {
     return this.knifeForm.get('additionalImages') as FormArray;
   }
 
+  initKnifeImageControl() {
+    return this.fb.group( new KnifeImage() );
+  }
+
 
   addAdditionalImage() {
-    this.additionalImages.push( this.fb.group( new KnifeImage() ) );
+    this.additionalImages.push( this.initKnifeImageControl() );
   }
 
   removeAdditionalImage( index: number ) {
-    // if( index >= 0 && index < ? ) {
+    // if( index >= 0 && index < / ) {
     //
     // }
 
   }
 
-  previewFile(event) {
-    const file = event.target.files[0];
-    if(!file) { return; }
-    this.clearUpload();
-    const reader = new FileReader();
-    this.file = file;
-    this.previewURL$ = fromEvent(reader, 'load').pipe(map((e: any) => e.target.result))
-    reader.readAsDataURL(this.file);
-  }
-
-  uploadFile() {
-    const randomId = Math.random().toString(36).substring(2);
-    this.ref = this.fireStorage.ref(`images/knives/${randomId}`);
-    this.task = this.ref.put(this.file);
-    this.uploadState$ = this.task.snapshotChanges().pipe(map(s => s.state));
-    this.uploadPercent$ = this.task.percentageChanges();
-    this.uploadURL$ = this.task.downloadURL();
-  }
-
-  pauseUpload() {
-    this.task.pause();
-  }
-
-  cancelUpload() {
-    this.task.cancel();
-    this.clearUpload();
-  }
-
-  resumeUpload() {
-    this.task.resume();
-  }
-
-  deleteUpload() {
-    this.ref.delete()
-      .pipe(
-        tap(() => this.clearUpload()),
-        take(1)
-      ).subscribe();
-  }
-
-  clearUpload() {
-    this.previewURL$ = of(null);
-    this.uploadPercent$ = of(0);
-    this.uploadURL$ = of(null);
-    this.file = null;
-    this.uploadState$ = undefined;
-  }
 
 }

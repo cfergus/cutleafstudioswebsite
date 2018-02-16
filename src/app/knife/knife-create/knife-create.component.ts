@@ -8,7 +8,7 @@ import { SharedMaterialModule } from '../../shared/shared-material.module';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 
-import { IKnife, Knife } from '../../models/knife';
+import { IKnife, Knife, KnifeImage } from '../../models/knife';
 
 @Component({
   selector: 'app-knife-create',
@@ -43,12 +43,7 @@ export class KnifeCreateComponent implements OnInit {
   private buildForm() {
     this.knifeForm = this.fb.group({
       name:    ['', Validators.required ],
-      additionalImages: this.fb.array([
-        this.fb.group({
-          description: [''],
-          url: ['']
-        })
-      ]),
+      additionalImages: this.fb.array([ ]),
       primaryImage:    this.fb.group({ // TODO : Convert to fb.group( new KnifeImage() )
         description: '',
         url: ''
@@ -57,6 +52,12 @@ export class KnifeCreateComponent implements OnInit {
     // this.knife.subscribe(knifeForm => {
     //   this.knifeForm.patchValue(knife);
     // })
+  }
+
+  initKnifeImageControl() {
+    return this.fb.group(
+      new KnifeImage()
+    );
   }
 
   addKnife() {
