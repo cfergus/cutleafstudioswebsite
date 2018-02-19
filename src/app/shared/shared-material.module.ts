@@ -8,7 +8,8 @@ import {
   MatCardModule,
   MatIconModule,
   MatProgressBarModule,
-  MatDividerModule
+  MatDividerModule,
+  MatExpansionModule
 } from '@angular/material';
 
 @NgModule({
@@ -19,7 +20,8 @@ import {
     MatCardModule,
     MatIconModule,
     MatProgressBarModule,
-    MatDividerModule
+    MatDividerModule,
+    MatExpansionModule
   ],
   exports: [
     MatButtonModule,
@@ -28,7 +30,8 @@ import {
     MatCardModule,
     MatIconModule,
     MatProgressBarModule,
-    MatDividerModule
+    MatDividerModule,
+    MatExpansionModule
   ]
 })
 export class SharedMaterialModule { }
