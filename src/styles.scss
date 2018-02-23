@@ -4,11 +4,16 @@
 /*@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';*/
 
 /* Custom Theme */
-/*@import '~./app/cutleaf-theme.scss';*/
+// @import '~./app/cutleaf-theme.scss';
 
 
 body {
   font-family: Roboto;
+}
+
+mat-sidenav-content {
+  background: linear-gradient(to bottom right, rgba(0,0,0,0), rgba(0,255,0,0.5));
+  // background: linear-gradient(to bottom right, rgba(0,0,0,0), $primary);
 }
 
 todo {

@@ -1,46 +1,80 @@
 <div [formGroup]="knifeImageForm">
 
-  <div>
-    <mat-progress-bar
-      mode="determinate"
-      [value]="uploadPercent$ | async"
-      max="100">
-    </mat-progress-bar>
-  </div>
+  <!-- TODO : Not respecting layout -->
+  <div fxLayout="row">
+    <div class="new-file-actions" fxFlex="50">
 
-  <section>
-    <label for="file">File:</label>
-    <input type="file" (change)="previewFile($event)" accept=".png,.jpg,.sketch" />
-  </section>
+      <div class="file-actions" fxLayout="row">
 
-  <!-- <section class="upload-bar spacing-container" *ngIf="!uploaded"> -->
-    <button mat-icon-button color="primary" (click)="uploadFile()" [disabled]="!(previewURL$ | async)">
-      <mat-icon aria-label="Upload Image">file_upload</mat-icon>
-    </button>
-  <!-- </section> -->
+        <label for="file">File:</label>
+        <input type="file" (change)="previewFile($event)" accept=".png,.jpg,.sketch" />
 
-  <!-- <section class="delete-bar spacing-container" *ngIf="uploaded"> -->
-    <button mat-icon-button (click)="deleteUpload()" [disabled]="!(uploadURL$ | async)">
-      <mat-icon aria-label="Delete Image">delete</mat-icon>
-    </button>
-  <!-- </section> -->
 
-  <div *ngIf="uploadURL$ | async; let uploadSrc">
-    <a [href]="uploadSrc">Your link to your file!</a>
-  </div>
+      </div>
 
-  <mat-form-field>
-    <input matInput type="text" formControlName="description" placeholder="Image Description">
-  </mat-form-field>
+      <div class="file-preview" fxLayout="column">
 
-  <section *ngIf="uploadState$ | async; let state">
-    <button (click)="pauseUpload()" [disabled]="state === 'paused'"> Pause </button>
-    <button (click)="cancelUpload()" [disabled]="!(state === 'paused' || state === 'running')"> Cancel </button>
-    <button (click)="resumeUpload()" [disabled]="state === 'running'"> Resume </button>
-  </section>
+        <div class="preview" *ngIf="previewURL$ | async; let previewSrc">
+          <img [src]="previewSrc" class="image-preview"/>
+        </div>
 
-  <div class="preview" *ngIf="previewURL$ | async; let previewSrc">
-    <img [src]="previewSrc" />
+        <button mat-icon-button color="primary" (click)="uploadFile()" [disabled]="!(previewURL$ | async)">
+          <mat-icon aria-label="Upload Image">file_upload</mat-icon> Upload
+        </button>
+
+      </div>
+
+      <div class="file-progress" *ngIf="uploadState$ | async; let state">
+        <mat-progress-bar
+          mode="determinate"
+          [value]="uploadPercent$ | async"
+          max="100">
+        </mat-progress-bar>
+
+        <p *ngIf="file">File Size: {{file.size}}</p>
+
+
+        <button mat-icon-button (click)="pauseUpload()"  [disabled]="state === 'paused'">
+          <mat-icon aria-label="Pause Upload">pause</mat-icon> Pause
+        </button>
+        <button mat-icon-button (click)="cancelUpload()" [disabled]="!(state === 'paused' || state === 'running')">
+          <mat-icon aria-label="Pause Upload">cancel</mat-icon>Cancel
+        </button>
+        <button mat-icon-button (click)="resumeUpload()" [disabled]="state === 'running'">
+          <mat-icon aria-label="Pause Upload">play_arrow</mat-icon>Resume
+        </button>
+      </div>
+    </div>
+
+
+
+
+    <div class="uploaded-file-actions">
+
+      <div *ngIf="uploadURL$ | async; let uploadSrc">
+        <a [href]="uploadSrc">Direct link to uploaded file</a>
+      </div>
+
+      <div class="uploaded-image">
+        <img *ngIf="knifeImageForm.value.url !== ''" [src]="knifeImageForm.value.url" [alt]="knifeImageForm.value.description" class="image-uploaded-preview">
+        <p *ngIf="knifeImageForm.value.url === ''"><i>No image uploaded yet</i></p>
+      </div>
+
+      <mat-form-field>
+        <input matInput type="text" formControlName="description" placeholder="Image Description">
+      </mat-form-field>
+
+      <!-- <mat-form-field>
+        <input matInput type="text" formControlName="url" placeholder="Image URL" disabled>
+      </mat-form-field> -->
+
+      <button mat-icon-button (click)="deleteUpload()" [disabled]="!(uploadURL$ | async)">
+        <mat-icon aria-label="Delete Image">delete</mat-icon> Delete
+      </button>
+
+      <p>Knife Image Form value:    {{ knifeImageForm.value | json}}</p>
+    </div>
+
   </div>
 
 </div>

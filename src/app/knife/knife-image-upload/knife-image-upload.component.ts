@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { from } from 'rxjs/observable/from';
 import { of } from 'rxjs/observable/of';
+import 'rxjs/add/operator/take';
 import { map, filter, tap, take } from 'rxjs/operators';
 
 
@@ -56,7 +57,14 @@ export class KnifeImageUploadComponent implements OnInit, OnDestroy{
     this.uploadState$ = this.task.snapshotChanges().pipe(map(s => s.state));
     this.uploadPercent$ = this.task.percentageChanges();
     this.uploadURL$ = this.task.downloadURL();
+
+    // Update the form value for the model when the upload completes
+    this.uploadURL$.subscribe( (value) => {
+      console.log("url changed to " + value);
+      this.knifeImageForm.value.url = value;
+    });
   }
+
 
   pauseUpload() {
     this.task.pause();
@@ -72,6 +80,7 @@ export class KnifeImageUploadComponent implements OnInit, OnDestroy{
   }
 
   deleteUpload() {
+    // TODO : dissociate image from knife when deleted?
     this.ref.delete()
       .pipe(
         tap(() => this.clearUpload()),

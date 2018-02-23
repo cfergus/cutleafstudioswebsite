@@ -7,8 +7,6 @@
 
   <div class="knife-info" *ngIf="(knife | async) as k">
 
-
-
     <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -70,9 +68,8 @@
 
   </div>
 
-  <mat-divider></mat-divider>
 
-  <button mat-button [disabled]="knifeForm.pristine" type="submit">Edit Knife</button>
+  <button mat-button [disabled]="knifeForm.pristine" type="submit" mat-raised-button color="primary">Edit Knife</button>
   <button mat-button type="reset" (click)="revert()"
             [disabled]="knifeForm.pristine" class="btn btn-danger">Revert</button>
 </form>
