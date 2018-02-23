@@ -2,7 +2,8 @@
     fxLayoutAlign="space-between start">
 
   <mat-card *ngFor="let knife of knives | async" class="knife-card"
-    [routerLink]="['/knives', knife.id ]"
+    [routerLink]="['/knives', knife.id ]" fxFlex.gt-sm="30"
+    md-ink-ripple
     >
 
     <mat-card-header>

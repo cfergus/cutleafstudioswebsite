@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+
+.knife-card {
+  margin-top: 5px;
+
+  // TODO : https://material.angular.io/guide/elevation animated elevation change
+  @include mat-elevation-transition;
+  @include mat-elevation(2);
+
+  &:hover {
+    @include mat-elevation(8);
+  }
+}
