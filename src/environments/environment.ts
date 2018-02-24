@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyAtfqQEQWVrzNfG2ykFgW27fpMju5WXfps',
-    authDomain: 'bladesite-8c33c.firebaseapp.com',
-    databaseURL: 'https://bladesite-8c33c.firebaseio.com',
-    projectId: 'bladesite-8c33c',
-    storageBucket: 'bladesite-8c33c.appspot.com',
-    messagingSenderId: '829637967841'
+    apiKey: 'AIzaSyA-P_6QrrNvRZq9pUdVNsOHJeMAMHeQc7Q',
+    authDomain: 'cutleaf-staging.firebaseapp.com',
+    databaseURL: 'https://cutleaf-staging.firebaseio.com',
+    projectId: 'cutleaf-staging',
+    storageBucket: 'cutleaf-staging.appspot.com',
+    messagingSenderId: '67592791694'
   }
 };
