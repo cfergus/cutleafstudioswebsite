@@ -10,14 +10,21 @@ The goal is to exercise Angular, Firebase, and related libraries.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-### Build
+### Build and Deploy
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+`ng build` creates build artifacts in the `dist/` directory. It will use environment configurations from the environments folder.
 
-### Deploy
+`firebase deploy` sends the build directory up to firebase hosting.
 
-The site is deployed using firebase hosting.
+See https://firebase.googleblog.com/2016/07/deploy-to-multiple-environments-with.html for more information on how to configure the firebase profiles.
+The aliases must be configured to 'staging' and 'production'.
 
-A production build must be done before deploying.
+#### Staging
 
-`firebase deploy`
+* `ng build --env=staging`
+* `firebase deploy -P staging`
+
+#### Production
+
+* `ng build --env=prod`
+* `firebase deploy -P production`

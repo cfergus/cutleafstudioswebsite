@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "bladesite-8c33c"
+    "default": "bladesite-8c33c",
+    "staging": "cutleaf-staging",
+    "production": "bladesite-8c33c"
   }
 }

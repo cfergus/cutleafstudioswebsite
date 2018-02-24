@@ -6,6 +6,6 @@ export const environment = {
     databaseURL: 'https://bladesite-8c33c.firebaseio.com',
     projectId: 'bladesite-8c33c',
     storageBucket: 'bladesite-8c33c.appspot.com',
-    messagingSenderId: '<your-messaging-sender-id>'
+    messagingSenderId: '829637967841'
   }
 };
