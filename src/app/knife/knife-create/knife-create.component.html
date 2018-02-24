@@ -4,16 +4,13 @@
     <mat-form-field>
       <input matInput type="text" formControlName="name" placeholder="Name">
     </mat-form-field>
-    
+
     <button mat-button type="submit" [disabled]="knifeForm.pristine || !canSubmit" >Create</button>
   </form>
 
   <p>
     The created knife will not be published - just creating a starting point.
-    <i>TODO: make that statement true</i>
+    <i class="todo">TODO: make that statement true</i>
   </p>
 
-  <p class="todo">
-    Disable form on click. Redirect to edit page.
-  </p>
 </div>

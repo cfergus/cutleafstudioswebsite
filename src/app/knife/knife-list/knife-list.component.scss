@@ -3,7 +3,6 @@
 .knife-card {
   margin-top: 5px;
 
-  // TODO : https://material.angular.io/guide/elevation animated elevation change
   @include mat-elevation-transition;
   @include mat-elevation(2);
 

@@ -7,12 +7,15 @@
     {{ k.name }}
   </p>
 
-  <p>Additional Images</p>
-  <div fxLayout="row" fxLayoutWrap
-      fxLayoutAlign="space-between start">
-    <div *ngFor="let additionalImage of k.additionalImages" fxFlex="30">
-      <img [src]="additionalImage.url" width="100%">
+
+  <ng-container *ngIf="k.additionalImages?.length > 0">
+    <p>Additional Images</p>
+    <div fxLayout="row" fxLayoutWrap
+        fxLayoutAlign="space-between start">
+      <div *ngFor="let additionalImage of k.additionalImages" fxFlex="30">
+        <img [src]="additionalImage.url" width="100%">
+      </div>
     </div>
-  </div>
+  </ng-container>
 
 </div>

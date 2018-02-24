@@ -44,14 +44,8 @@ export class KnifeCreateComponent implements OnInit {
     this.knifeForm = this.fb.group({
       name:    ['', Validators.required ],
       additionalImages: this.fb.array([ ]),
-      primaryImage:    this.fb.group({ // TODO : Convert to fb.group( new KnifeImage() )
-        description: '',
-        url: ''
-      })
+      primaryImage:    this.initKnifeImageControl()
     });
-    // this.knife.subscribe(knifeForm => {
-    //   this.knifeForm.patchValue(knife);
-    // })
   }
 
   initKnifeImageControl() {
@@ -72,15 +66,26 @@ export class KnifeCreateComponent implements OnInit {
 
     const data = this.knifeForm.value;
     // TODO : deep clone array values?
-    this.knivesCollection.add( data );
-    this.router.navigate([`/knives/notsureyet/edit`]);
-
-    // TODO : retrieve or set id value
-    // const newId = this.firestore.createId();
-    // data.id = newId;
+    /*
+    TODO : Should we create our own id? autogenerate? Use ID for url path? https://firebase.google.com/docs/firestore/manage-data/add-data#add_a_document
+    suggested approach is to :
+    - restrict valid names (minlength, max, special chars, etc)
+    - slugify name - https://github.com/paulsmith/angular-slugify/blob/master/angular-slugify.js
+    - test to see if it already exists (or check for error on create)
+    - perform a 'reslugify' if needed
+    - add slug name as id
+    */
     // this.knivesCollection.add( data );
-    //
-    // this.router.navigate([`/knives/${newId}/edit`]);
+    const slugName = data.name.replace(/\s/g, "-");
+    this.knivesCollection.doc(slugName).set(data)
+    .then( () => {
+      this.router.navigate([`/knives/${slugName}/edit`]);
+    } )
+    .catch( (error) => {
+      console.error( "Error while trying to create knife: ", error );
+      this.canSubmit = true;
+    } );
+
   }
 
 }

@@ -6,6 +6,9 @@ import { KnifeDetailComponent } from './knife-detail/knife-detail.component';
 import { KnifeCreateComponent } from './knife-create/knife-create.component';
 import { KnifeEditComponent } from './knife-edit/knife-edit.component';
 
+// TODO : Guards to protect edit/new unless authorized
+// TODO : Handle errors throughout the app if permissions aren't adequate for firebase interaction
+
 const routes: Routes = [
   { path: 'knives', component: KnifeListComponent },
   { path: 'knives/new', component: KnifeCreateComponent },

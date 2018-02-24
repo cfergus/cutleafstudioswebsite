@@ -34,7 +34,7 @@ export class KnifeDetailComponent implements OnInit, OnDestroy {
       this.knifeId = params['id'];
 
       this.knifeDoc = this.firestore.doc<IKnife>(`knives/${this.knifeId}` );
-      // TODO : Test invalid knife
+      // TODO : Determine if knife id is invalid, not found, etc. Possibly as a route guard instead of onInit.
 
       this.knife = this.knifeDoc.valueChanges();
     });
