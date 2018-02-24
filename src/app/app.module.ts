@@ -3,9 +3,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 // import { HttpModule } from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
+
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatSidenavModule, MatToolbarModule, MatMenuModule, MatIconModule, MatListModule } from '@angular/material';
+import { MatSidenavModule, MatToolbarModule, MatMenuModule, MatListModule } from '@angular/material';
 
 import { SharedMaterialModule } from './shared/shared-material.module';
 
@@ -37,6 +39,7 @@ import { AboutModule } from './about/about.module';
     BrowserAnimationsModule,
     FormsModule,
     // HttpModule,
+    HttpClientModule,
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
@@ -48,7 +51,6 @@ import { AboutModule } from './about/about.module';
     MatSidenavModule,
     MatToolbarModule,
     MatMenuModule,
-    MatIconModule,
     MatListModule,
 
     SharedMaterialModule,

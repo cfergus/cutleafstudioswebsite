@@ -44,18 +44,22 @@
             Additional Images
           </mat-panel-title>
           <mat-panel-description>
+            warning - basically not working
           </mat-panel-description>
         </mat-expansion-panel-header>
         <div formArrayName="additionalImages">
           <div *ngFor="let additionalImage of additionalImages.controls; let i=index" [formGroupName]="i">
             <p>Additional Image {{i + 1}}</p>
             <button type="button" mat-icon-button (click)="removeAdditionalImage( i )">
-              delete
+              <mat-icon aria-label="Delete Image">delete</mat-icon> Delete
             </button>
             <app-knife-image-upload [formGroup]="knifeForm.controls.additionalImages.controls[i]"></app-knife-image-upload>
           </div>
         </div>
-        <button mat-button type="button" (click)="addAdditionalImage()">Add Additional Image</button>
+        <button mat-button type="button" (click)="addAdditionalImage()">
+          <mat-icon aria-label="Add Image">add</mat-icon>
+          Add Additional Image
+        </button>
       </mat-expansion-panel>
 
     </mat-accordion>
@@ -69,7 +73,8 @@
   </div>
 
 
-  <button mat-button [disabled]="knifeForm.pristine" type="submit" mat-raised-button color="primary">Edit Knife</button>
+  <!-- <button mat-button [disabled]="knifeForm.pristine" type="submit" mat-raised-button color="primary">Edit Knife</button> -->
+  <button mat-button type="submit" mat-raised-button color="primary">Edit Knife</button>
   <button mat-button type="reset" (click)="revert()"
             [disabled]="knifeForm.pristine" class="btn btn-danger">Revert</button>
 </form>

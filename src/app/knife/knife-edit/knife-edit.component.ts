@@ -83,6 +83,8 @@ export class KnifeEditComponent implements OnInit, OnDestroy {
     });
     this.knife.subscribe(k => {
       this.knifeForm.patchValue(k);
+      // TODO : Strange behavior here; uncertain how to handle arrays from firebase
+      // possible help? https://stackoverflow.com/questions/43934396/angular-4-patchvalue-based-on-index-in-formarray
       this.additionalImages.patchValue( k.additionalImages );
     })
   }

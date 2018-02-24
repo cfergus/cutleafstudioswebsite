@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import {MatIconRegistry} from '@angular/material';
+import {DomSanitizer} from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-root',
@@ -13,8 +16,12 @@ export class AppComponent {
 
   user: Observable<firebase.User>;
 
-  constructor( public afAuth: AngularFireAuth ) {
+  constructor( public afAuth: AngularFireAuth, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer ) {
     this.user = afAuth.authState;
+    iconRegistry.addSvgIcon(
+        'cutleaf-logo',
+        sanitizer.bypassSecurityTrustResourceUrl('/assets/images/cutleaf-logo.svg'));
+
   }
 
   login() {

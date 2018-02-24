@@ -9,7 +9,6 @@
         <label for="file">File:</label>
         <input type="file" (change)="previewFile($event)" accept=".png,.jpg,.sketch" />
 
-
       </div>
 
       <div class="file-preview" fxLayout="column">
@@ -18,7 +17,7 @@
           <img [src]="previewSrc" class="image-preview"/>
         </div>
 
-        <button mat-icon-button color="primary" (click)="uploadFile()" [disabled]="!(previewURL$ | async)">
+        <button mat-button color="primary" (click)="uploadFile()" [disabled]="!(previewURL$ | async)">
           <mat-icon aria-label="Upload Image">file_upload</mat-icon> Upload
         </button>
 
@@ -31,16 +30,16 @@
           max="100">
         </mat-progress-bar>
 
-        <p *ngIf="file">File Size: {{file.size}}</p>
+        <p *ngIf="file">File Size: {{file.size}} bytes</p>
 
 
-        <button mat-icon-button (click)="pauseUpload()"  [disabled]="state === 'paused'">
+        <button mat-button (click)="pauseUpload()"  [disabled]="state === 'paused'">
           <mat-icon aria-label="Pause Upload">pause</mat-icon> Pause
         </button>
-        <button mat-icon-button (click)="cancelUpload()" [disabled]="!(state === 'paused' || state === 'running')">
+        <button mat-button (click)="cancelUpload()" [disabled]="!(state === 'paused' || state === 'running')">
           <mat-icon aria-label="Pause Upload">cancel</mat-icon>Cancel
         </button>
-        <button mat-icon-button (click)="resumeUpload()" [disabled]="state === 'running'">
+        <button mat-button (click)="resumeUpload()" [disabled]="state === 'running'">
           <mat-icon aria-label="Pause Upload">play_arrow</mat-icon>Resume
         </button>
       </div>
