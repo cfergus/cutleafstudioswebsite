@@ -15,8 +15,8 @@ export class BladeAnglesComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit() {
+    // TODO : Knife loaded during routing?
     this.knife = new Knife();
-
   }
 
   ngOnDestroy() {

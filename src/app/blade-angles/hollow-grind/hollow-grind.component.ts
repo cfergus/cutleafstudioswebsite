@@ -13,8 +13,6 @@ export class HollowGrindComponent implements OnInit, OnDestroy {
   public knife: Knife;
 
   // Common
-  bladeWidth = 1500;
-  bladeThickness = 250;
 
   svgViewBoxSize = 400;
 
@@ -29,7 +27,7 @@ export class HollowGrindComponent implements OnInit, OnDestroy {
   // }
 
   ngOnInit() {
-
+    console.log( this.knife );
   }
 
   ngOnDestroy() {

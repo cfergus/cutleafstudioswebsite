@@ -4,9 +4,9 @@
 <div class="">
   My knife is:
 
-  knife.length
-  knife.width
-  knife.thickness
+  {{knife?.dimLength.magnitude}} things long
+  {{knife?.dimWidth.magnitude}} things wide
+  {{knife?.dimThickness.magnitude}} things thick
 </div>
 
 
@@ -15,7 +15,7 @@
     <!-- <ng-template mat-tab-label>
       <mat-icon>hollow-grind</mat-icon>
     </ng-template> -->
-    <app-hollow-grind knife="knife"></app-hollow-grind>
+    <app-hollow-grind [knife]="knife"></app-hollow-grind>
   </mat-tab>
   <mat-tab label="Chisel">
     Nothing yet for chisel

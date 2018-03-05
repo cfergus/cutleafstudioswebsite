@@ -73,8 +73,12 @@ export class KnifeEditComponent implements OnInit, OnDestroy {
 
   private buildForm() {
     this.knifeForm = this.fb.group({
+      // General Info
       name:    ['', Validators.required ],
-      // description:  ['', Validators.required ],
+      shortDescription:  [''],
+      longDescription:  [''],
+
+      // Images
       additionalImages: this.fb.array([
       ]),
       primaryImage:    this.initKnifeImageControl()

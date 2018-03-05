@@ -1,4 +1,4 @@
-<div *ngIf="(knife | async) as k">
+<ng-container *ngIf="(knife | async) as k">
 
 
   <img src="{{k.primaryImage.url}}" alt="" width="100%">
@@ -7,6 +7,14 @@
     {{ k.name }}
   </p>
 
+
+  <p *ngIf="k.shortDescription">
+    {{ k.shortDescription }}
+  </p>
+
+  <p *ngIf="k.longDescription">
+    {{ k.longDescription }}
+  </p>
 
   <ng-container *ngIf="k.additionalImages?.length > 0">
     <p>Additional Images</p>
@@ -18,4 +26,4 @@
     </div>
   </ng-container>
 
-</div>
+</ng-container>

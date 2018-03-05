@@ -1,8 +1,8 @@
 <mat-form-field>
-  <input matInput placeholder="Blade Width" type="number" name="bladeWidth" min="0">
+  <input matInput placeholder="Blade Width" type="number" name="width.magnitude" min="0">
 </mat-form-field>
 <mat-form-field>
-  <input matInput placeholder="Blade Thickness" type="number" name="bladeThickness" min="0">
+  <input matInput placeholder="Blade Thickness" type="number" name="thickness.magnitude" min="0">
 </mat-form-field>
 <mat-form-field>
   <input matInput placeholder="Wheel Radius" type="number" name="wheelRadius" min="1">
@@ -19,24 +19,24 @@
 
 
     <!-- Margin on the blade edge -->
-    <rect [attr.x]="bladeThickness - edgeMargin"
-        [attr.height]="bladeWidth"
+    <rect [attr.x]="knife.dimThickness.magnitude - edgeMargin"
+        [attr.height]="knife.dimWidth.magnitude"
         [attr.width]="edgeMargin"
         class="blade-edge-margin">
       <title>Blade Edge Margin</title>
     </rect>
 
     <!-- Blade stock -->
-    <rect [attr.height]="bladeWidth"
-        [attr.width]="bladeThickness - edgeMargin"
+    <rect [attr.height]="knife.dimWidth.magnitude"
+        [attr.width]="knife.dimThickness.magnitude - edgeMargin"
         class="blade-stock">
       <title>Blade Steel</title>
     </rect>
 
     <!-- Wheel -->
     <circle [attr.r]="wheelRadius"
-        [attr.cx]="(bladeThickness - edgeMargin) - wheelRadius"
-        [attr.cy]="bladeWidth"
+        [attr.cx]="(knife.dimThickness.magnitude - edgeMargin) - wheelRadius"
+        [attr.cy]="knife.dimWidth.magnitude"
         class="blade-angle-wheel">
       <title>Wheel</title>
     </circle>
