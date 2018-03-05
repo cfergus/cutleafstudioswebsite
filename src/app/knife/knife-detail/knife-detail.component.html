@@ -1,7 +1,8 @@
 <ng-container *ngIf="(knife | async) as k">
 
 
-  <img src="{{k.primaryImage.url}}" alt="" width="100%">
+  <!-- TODO : focused image isolated from primary image -->
+  <img src="{{k.primaryImage.url}}" alt="" class="focused-image">
 
   <p>
     {{ k.name }}
@@ -21,7 +22,7 @@
     <div fxLayout="row" fxLayoutWrap
         fxLayoutAlign="space-between start">
       <div *ngFor="let additionalImage of k.additionalImages" fxFlex="30">
-        <img [src]="additionalImage.url" width="100%">
+        <img [src]="additionalImage.url" class="other-image">
       </div>
     </div>
   </ng-container>

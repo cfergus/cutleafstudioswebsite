@@ -1,13 +1,14 @@
 <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutWrap
     fxLayoutAlign="space-between start">
 
+  <!-- TODO : consider calculated layout to specify gap, etc -->
   <mat-card *ngFor="let knife of knives | async" class="knife-card"
     [routerLink]="['/knives', knife.id ]" fxFlex.gt-sm="33" fxLayoutGap="14px"
     >
 
     <mat-card-header>
       <mat-card-title>{{knife.name}}</mat-card-title>
-      <mat-card-subtitle>{{knife.shortDescription}}</mat-card-subtitle>
+      <!-- <mat-card-subtitle>{{knife.shortDescription}}</mat-card-subtitle> -->
     </mat-card-header>
 
     <img mat-card-image [src]="knife.primaryImage.url">

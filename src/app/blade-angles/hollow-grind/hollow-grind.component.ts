@@ -20,14 +20,15 @@ export class HollowGrindComponent implements OnInit, OnDestroy {
   edgeMargin = 20;
   wheelRadius = 1500;
 
-  constructor() {}
+  constructor() {
+
+  }
 
   // maxDimension() {
   //   Math.max(self.bladeWidth, self.bladeThickness);
   // }
 
   ngOnInit() {
-    console.log( this.knife );
   }
 
   ngOnDestroy() {
