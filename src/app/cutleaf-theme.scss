@@ -11,7 +11,6 @@
 // hue.
 $cutleaf-app-primary: mat-palette($mat-blue-grey);
 $cutleaf-app-accent:  mat-palette($mat-green);
-// $cutleaf-app-accent:  mat-palette($mat-green, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $cutleaf-app-warn:    mat-palette($mat-red);
@@ -23,8 +22,3 @@ $cutleaf-app-theme: mat-light-theme($cutleaf-app-primary, $cutleaf-app-accent, $
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($cutleaf-app-theme);
-
-  //
-  // $mdThemingProvider.theme('default')
-  //     .primaryPalette('blue-grey')
-  //     .accentPalette('green');

@@ -21,6 +21,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 
 import { KnifeModule } from './knife/knife.module';
+import { BladeAnglesModule } from './blade-angles/blade-angles.module';
 import { AboutModule } from './about/about.module';
 
 
@@ -57,6 +58,7 @@ import { AboutModule } from './about/about.module';
 
     KnifeModule,
     AboutModule,
+    BladeAnglesModule,
 
     AppRoutingModule
   ],

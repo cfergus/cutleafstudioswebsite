@@ -1,0 +1,44 @@
+<mat-form-field>
+  <input matInput placeholder="Blade Width" type="number" name="bladeWidth" min="0">
+</mat-form-field>
+<mat-form-field>
+  <input matInput placeholder="Blade Thickness" type="number" name="bladeThickness" min="0">
+</mat-form-field>
+<mat-form-field>
+  <input matInput placeholder="Wheel Radius" type="number" name="wheelRadius" min="1">
+</mat-form-field>
+<mat-form-field>
+  <input matInput placeholder="Edge Margin" type="number" name="edgeMargin" min="0">
+</mat-form-field>
+
+<div class="visualization cross-section-view">
+
+  <svg [attr.width]="svgViewBoxSize" [attr.height]="svgViewBoxSize"
+      [attr.viewBox]="'0 0 1500 1500'">
+      <!-- [attr.viewbox]="'0 0 ' + maxDimension() + ' ' + maxDimension()"> -->
+
+
+    <!-- Margin on the blade edge -->
+    <rect [attr.x]="bladeThickness - edgeMargin"
+        [attr.height]="bladeWidth"
+        [attr.width]="edgeMargin"
+        class="blade-edge-margin">
+      <title>Blade Edge Margin</title>
+    </rect>
+
+    <!-- Blade stock -->
+    <rect [attr.height]="bladeWidth"
+        [attr.width]="bladeThickness - edgeMargin"
+        class="blade-stock">
+      <title>Blade Steel</title>
+    </rect>
+
+    <!-- Wheel -->
+    <circle [attr.r]="wheelRadius"
+        [attr.cx]="(bladeThickness - edgeMargin) - wheelRadius"
+        [attr.cy]="bladeWidth"
+        class="blade-angle-wheel">
+      <title>Wheel</title>
+    </circle>
+  </svg>
+</div>

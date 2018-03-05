@@ -1,0 +1,28 @@
+<p>This tool helps show how blade angles are impacted by different parameters.</p>
+
+
+<div class="">
+  My knife is:
+
+  knife.length
+  knife.width
+  knife.thickness
+</div>
+
+
+<mat-tab-group>
+  <mat-tab label="Hollow">
+    <!-- <ng-template mat-tab-label>
+      <mat-icon>hollow-grind</mat-icon>
+    </ng-template> -->
+    <app-hollow-grind knife="knife"></app-hollow-grind>
+  </mat-tab>
+  <mat-tab label="Chisel">
+    Nothing yet for chisel
+    <!-- <app-chisel-grind knife="knife"></app-chisel-grind> -->
+  </mat-tab>
+  <mat-tab label="Scandi">
+    Nothing yet for scandi
+    <!-- <app-scandi-grind knife="knife"></app-scandi-grind> -->
+  </mat-tab>
+</mat-tab-group>
