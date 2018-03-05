@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Validators, FormArray, FormGroup, FormBuilder } from '@angular/forms';
 
 import { IKnife, Knife, IKnifeImage, KnifeImage } from '../../models/knife';
@@ -32,6 +32,7 @@ export class KnifeEditComponent implements OnInit, OnDestroy {
     private firestore: AngularFirestore,
     private fireStorage: AngularFireStorage,
     private route: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder ) {
 
   }
@@ -59,12 +60,14 @@ export class KnifeEditComponent implements OnInit, OnDestroy {
     // https://angularfirebase.com/lessons/reactive-forms-in-angular-with-the-firebase-database/
     if (this.knifeForm.status != 'VALID') {
       console.log('form is not valid, cannot save to database');
+      // TODO : Display error message(s)
       return;
     }
 
     const data = this.knifeForm.value;
     // TODO : deep clone array values?
     this.knifeDoc.update( data );
+    this.router.navigate( ['/knives', { id: this.knifeId} ] );
   }
 
   revert() {
