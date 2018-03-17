@@ -1,30 +1,32 @@
 <ng-container *ngIf="(knife | async) as k">
 
-
-  <!-- TODO : focused image isolated from primary image -->
+  <!-- TODO : focused image isolated from primary image (click to show other image) -->
   <img src="{{k.primaryImage.url}}" alt="" class="focused-image">
 
-  <p>
-    {{ k.name }}
-  </p>
+  <mat-card>
 
+    <p>
+      {{ k.name }}
+    </p>
 
-  <p *ngIf="k.shortDescription">
-    {{ k.shortDescription }}
-  </p>
+    <p *ngIf="k.shortDescription">
+      {{ k.shortDescription }}
+    </p>
 
-  <p *ngIf="k.longDescription">
-    {{ k.longDescription }}
-  </p>
+    <p *ngIf="k.longDescription">
+      {{ k.longDescription }}
+    </p>
 
-  <ng-container *ngIf="k.additionalImages?.length > 0">
-    <p>Additional Images</p>
-    <div fxLayout="row" fxLayoutWrap
-        fxLayoutAlign="space-between start">
-      <div *ngFor="let additionalImage of k.additionalImages" fxFlex="30">
-        <img [src]="additionalImage.url" class="other-image">
+    <ng-container *ngIf="k.additionalImages?.length > 0">
+      <p>Additional Images</p>
+      <div fxLayout="row" fxLayoutWrap
+          fxLayoutAlign="space-between start">
+        <div *ngFor="let additionalImage of k.additionalImages" fxFlex="30">
+          <img [src]="additionalImage.url" class="other-image">
+        </div>
       </div>
-    </div>
-  </ng-container>
+    </ng-container>
+
+  </mat-card>
 
 </ng-container>

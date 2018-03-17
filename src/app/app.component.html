@@ -5,7 +5,6 @@
       <h2>Navigation</h2>
     </mat-toolbar>
 
-
     <mat-nav-list>
       <a mat-list-item routerLink="/knives" routerLinkActive="active" (click)="sidenav.close()">Knives</a>
       <a mat-list-item routerLink="/about" routerLinkActive="active" (click)="sidenav.close()">About</a>
@@ -24,8 +23,11 @@
       </button>
 
       <span>
-        <mat-icon svgIcon="cutleaf-logo"></mat-icon>
-        <img src="//res.cloudinary.com/cutleaf-studios/image/upload/logo/cutleaf-text.svg" alt="CutLeaf Logo Text">
+        <!-- <mat-icon svgIcon="cutleaf-logo"></mat-icon> -->
+        <!-- <img src="//res.cloudinary.com/cutleaf-studios/image/upload/logo/cutleaf-text.svg" alt="CutLeaf Logo Text"> -->
+        <a routerLink="/">
+          <img src="/assets/images/cutleaf-leaf-text-transparent.png" alt="CutLeaf Logo with Text" class="header-image">
+        </a>
       </span>
 
       <span fxFlex="flex"></span>
@@ -53,6 +55,5 @@
     </div>
 
   </mat-sidenav-content>
-
 
 </mat-sidenav-container>
