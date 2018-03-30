@@ -16,7 +16,7 @@
           <img [src]="previewSrc" class="image-preview"/>
         </div>
 
-        <button mat-button color="primary" (click)="uploadFile()" [disabled]="!(previewURL$ | async)">
+        <button mat-button color="primary" (click)="uploadFile()" [disabled]="!(previewURL$ | async)" type="button">
           <mat-icon aria-label="Upload Image">file_upload</mat-icon> Upload
         </button>
 
@@ -32,13 +32,13 @@
         <p *ngIf="file">File Size: {{file.size}} bytes</p>
 
 
-        <button mat-button (click)="pauseUpload()"  [disabled]="state === 'paused'">
+        <button mat-button (click)="pauseUpload()"  [disabled]="state === 'paused'" type="button">
           <mat-icon aria-label="Pause Upload">pause</mat-icon> Pause
         </button>
-        <button mat-button (click)="cancelUpload()" [disabled]="!(state === 'paused' || state === 'running')">
+        <button mat-button (click)="cancelUpload()" [disabled]="!(state === 'paused' || state === 'running')" type="button">
           <mat-icon aria-label="Pause Upload">cancel</mat-icon>Cancel
         </button>
-        <button mat-button (click)="resumeUpload()" [disabled]="state === 'running'">
+        <button mat-button (click)="resumeUpload()" [disabled]="state === 'running'" type="button">
           <mat-icon aria-label="Pause Upload">play_arrow</mat-icon>Resume
         </button>
       </div>
@@ -66,7 +66,7 @@
         <input matInput type="text" formControlName="url" placeholder="Image URL" disabled>
       </mat-form-field> -->
 
-      <button mat-icon-button (click)="deleteUpload()" [disabled]="!(uploadURL$ | async)">
+      <button mat-icon-button (click)="deleteUpload()" [disabled]="!(uploadURL$ | async)" type="button">
         <mat-icon aria-label="Delete Image">delete</mat-icon> Delete
       </button>
 

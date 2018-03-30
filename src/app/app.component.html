@@ -22,13 +22,11 @@
         <mat-icon>menu</mat-icon>
       </button>
 
-      <span>
-        <!-- <mat-icon svgIcon="cutleaf-logo"></mat-icon> -->
-        <!-- <img src="//res.cloudinary.com/cutleaf-studios/image/upload/logo/cutleaf-text.svg" alt="CutLeaf Logo Text"> -->
-        <a routerLink="/">
-          <img src="/assets/images/cutleaf-leaf-text-transparent.png" alt="CutLeaf Logo with Text" class="header-image">
-        </a>
-      </span>
+      <a routerLink="/">
+        <!-- TODO : remove inline style in favor of flex, class, or other -->
+        <img src="/assets/images/cutleaf-leaf-text-transparent.png" alt="CutLeaf Logo with Text" class="header-image"
+            style="margin-top: 8px">
+      </a>
 
       <span fxFlex="flex"></span>
 

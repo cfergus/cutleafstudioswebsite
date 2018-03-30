@@ -67,7 +67,7 @@ export class KnifeEditComponent implements OnInit, OnDestroy {
     const data = this.knifeForm.value;
     // TODO : deep clone array values?
     this.knifeDoc.update( data );
-    this.router.navigate( ['/knives', { id: this.knifeId} ] );
+    this.router.navigate( ['/knives', this.knifeId ] );
   }
 
   revert() {

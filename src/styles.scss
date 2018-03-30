@@ -15,7 +15,8 @@ mat-sidenav-content {
   background: linear-gradient(to bottom right, rgba(0,0,0,0), mat-color($cutleaf-app-primary));
 }
 
-todo {
-  background-color: orange;
+.todo {
+  background-color: blueviolet;
+  color: orange;
   font-style: italic;
 }
