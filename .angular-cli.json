@@ -20,6 +20,7 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
+        "styles-app-loading.scss",
         "app/cutleaf-theme.scss"
       ],
       "scripts": [
