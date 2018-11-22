@@ -30,5 +30,5 @@ Staging site: https://cutleaf-staging.firebaseapp.com
 
 Production site: https://www.cutleafstudios.com
 
-* `ng build --prod --configuration=prod`
+* `ng build --prod --configuration=production`
 * `firebase deploy -P production`
