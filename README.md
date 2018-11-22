@@ -23,12 +23,12 @@ The aliases must be configured to 'staging' and 'production'.
 
 Staging site: https://cutleaf-staging.firebaseapp.com
 
-* `ng build --env=staging`
+* `ng build --prod --configuration=staging`
 * `firebase deploy -P staging`
 
 #### Production
 
 Production site: https://www.cutleafstudios.com
 
-* `ng build --env=prod`
+* `ng build --prod --configuration=prod`
 * `firebase deploy -P production`
