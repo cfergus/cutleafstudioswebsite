@@ -1,34 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-// import { HttpModule } from '@angular/http';
-import {HttpClientModule} from '@angular/common/http';
-
-
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatSidenavModule, MatToolbarModule, MatMenuModule, MatListModule } from '@angular/material';
-
-import { SharedMaterialModule } from './shared/shared-material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSidenavModule, MatToolbarModule, MatMenuModule, MatListModule, MatIconModule } from '@angular/material';
+
+import { SharedMaterialModule } from './shared/shared-material.module';
+
 import { environment } from '../environments/environment';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireStorageModule } from 'angularfire2/storage';
-
 import { KnifeModule } from './knife/knife.module';
-import { BladeAnglesModule } from './blade-angles/blade-angles.module';
 import { AboutModule } from './about/about.module';
-
-
-// export const firebaseAuthConfig = {
-//   provider: AuthProviders.Google,
-//   method: AuthMethods.Redirect
-// };
+import { BladeAnglesModule } from './blade-angles/blade-angles.module';
 
 
 @NgModule({
@@ -38,29 +28,29 @@ import { AboutModule } from './about/about.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule,
-    // HttpModule,
-    HttpClientModule,
 
+    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AngularFireAuthModule,
-    AngularFireStorageModule,
+    AngularFirestoreModule, 
+    AngularFireAuthModule, 
+    AngularFireStorageModule, 
 
     FlexLayoutModule,
 
+    MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
     MatMenuModule,
     MatListModule,
 
     SharedMaterialModule,
-
+    
     KnifeModule,
     AboutModule,
     BladeAnglesModule,
-
+    
     AppRoutingModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

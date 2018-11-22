@@ -58,9 +58,13 @@
         <p *ngIf="knifeImageForm.value.url === ''"><i>No image uploaded yet</i></p>
       </div>
 
-      <mat-form-field>
+      <!-- TODO : Editing this field causes the image to be "lost"
+      it seems that the image url is being loaded from firebase when the description changes
+      since the image url is not yet saved (if just uploaded) it resets to empty
+      -->
+      <!-- <mat-form-field>
         <input matInput type="text" formControlName="description" placeholder="Image Description">
-      </mat-form-field>
+      </mat-form-field> -->
 
       <!-- <mat-form-field>
         <input matInput type="text" formControlName="url" placeholder="Image URL" disabled>

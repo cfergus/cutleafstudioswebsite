@@ -3,15 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Validators, FormArray, FormGroup, FormBuilder } from '@angular/forms';
 
 import { IKnife, Knife, IKnifeImage, KnifeImage } from '../../models/knife';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { AngularFireStorage, AngularFireUploadTask, AngularFireStorageReference } from 'angularfire2/storage';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFireStorage, AngularFireUploadTask, AngularFireStorageReference } from '@angular/fire/storage';
 
-
-import { Observable } from 'rxjs/Observable';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { from } from 'rxjs/observable/from';
-import { of } from 'rxjs/observable/of';
-import { map, filter, tap, take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-knife-edit',

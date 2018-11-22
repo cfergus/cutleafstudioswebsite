@@ -1,8 +1,8 @@
-<mat-sidenav-container fullscreen>
-  <mat-sidenav #sidenav position="start" (open)="closeStartButton.focus()">
+<mat-sidenav-container>
+  <mat-sidenav #sidenav position="start" (opened)="closeStartButton.focus()">
     <!-- sidenav content -->
     <mat-toolbar color="primary" fxLayout="row">
-      <h2>Navigation</h2>
+      <h2>Navigation <button mat-button #closeStartButton (click)="sidenav.close()"><mat-icon>keyboard_arrow_left</mat-icon></button></h2>
     </mat-toolbar>
 
     <mat-nav-list>
@@ -11,7 +11,7 @@
       <!-- <a mat-list-item routerLink="" routerLinkActive="active" (click)="sidenav.close()">Contact</a> -->
       <!-- TODO : Contact form https://medium.com/@markgoho/create-a-contact-form-in-angular-using-cloud-functions-for-firebase-5e390bdf5600 -->
       <!-- <a mat-list-item routerLink="" routerLinkActive="active" (click)="sidenav.close()">Maker Tools</a> -->
-      <button mat-button #closeStartButton (click)="sidenav.close()">Close <mat-icon>keyboard_arrow_left</mat-icon></button>
+      <!-- <button mat-button #closeStartButton (click)="sidenav.close()">Close <mat-icon>keyboard_arrow_left</mat-icon></button> -->
     </mat-nav-list>
   </mat-sidenav>
 
@@ -24,27 +24,35 @@
 
       <a routerLink="/">
         <!-- TODO : remove inline style in favor of flex, class, or other -->
-        <img src="/assets/images/cutleaf-leaf-text-transparent.png" alt="CutLeaf Logo with Text" class="header-image"
-            style="margin-top: 8px">
+        <img src="/assets/images/cutleaf-leaf-text-transparent.png" 
+            alt="CutLeaf Logo with Text" 
+            class="header-image">
       </a>
 
       <span fxFlex="flex"></span>
 
+
+      <ng-container *ngIf="afAuth.user | async as user">
+        <span fxHide fxShow.gt-sm>
+          <small>{{ user.email }} </small>
+        </span>
+        <img *ngIf="user.photoURL" class="user-image" src="{{ user.photoURL }}">
+      </ng-container>
+
       <mat-menu #loginMenu="matMenu">
-        <button mat-menu-item (click)="login()" *ngIf="!(user | async)">Login</button>
-        <button mat-menu-item (click)="logout()" *ngIf="(user | async)">Logout</button>
+        <button mat-menu-item (click)="logout()" *ngIf="afAuth.user | async">Logout</button>
+        <button mat-menu-item (click)="login()" *ngIf="!(afAuth.user | async)">Login</button>
       </mat-menu>
+      <!-- <mat-menu #loginMenu="matMenu">
+        <button mat-menu-item (click)="logout()" *ngIf="afAuth.user | async; else login">Logout</button>
+        <ng-template #login>
+          <button mat-menu-item (click)="login()">Login</button>
+        </ng-template>
+      </mat-menu> -->
 
       <button mat-button [matMenuTriggerFor]="loginMenu">
         <mat-icon>more_vert</mat-icon>
       </button>
-
-      <ng-container *ngIf="user | async; let u">
-        <span fxHide fxShow.gt-sm>
-          <small>{{ u.email }} </small>
-        </span>
-        <img *ngIf="u.photoURL" src="{{ u.photoURL }}" style="width:24px;height:24px;">
-      </ng-container>
 
     </mat-toolbar>
 

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
-import {MatIconRegistry} from '@angular/material';
-import {DomSanitizer} from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
+
+import { MatIconRegistry } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -14,18 +14,16 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class AppComponent {
   title = 'CutLeaf Studios';
 
-  user: Observable<firebase.User>;
-
-  constructor( public afAuth: AngularFireAuth, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer ) {
-    this.user = afAuth.authState;
+  constructor(public afAuth: AngularFireAuth, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    // this.user = afAuth.authState;
     iconRegistry.addSvgIcon(
-        'cutleaf-logo',
-        sanitizer.bypassSecurityTrustResourceUrl('/assets/images/cutleaf-logo.svg'));
+      'cutleaf-logo',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/images/cutleaf-logo.svg'));
 
   }
 
   login() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
   logout() {

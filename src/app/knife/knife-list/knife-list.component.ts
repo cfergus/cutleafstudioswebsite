@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { AngularFireStorage } from 'angularfire2/storage';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 import { Knife, IKnife } from '../../models/knife';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -31,17 +32,19 @@ export class KnifeListComponent implements OnInit {
     // this.knives = this.knivesCollection.valueChanges();
 
 
-    this.knives = this.knivesCollection.snapshotChanges().map( actions => {
+    this.knives = this.knivesCollection.snapshotChanges()
+      .pipe(
+        map( actions => {
 
-      return actions.map( a => {
-        const data = a.payload.doc.data();
-        const id = a.payload.doc.id;
+          return actions.map( a => {
+            // const data = a.payload.doc.data();
+            const data = a.payload.doc.data() as Knife;
+            const id = a.payload.doc.id;
 
-        return { id, ...data };
-      });
-
-    });
+            return { id, ...data };
+          });
+        })
+      )
   }
-
-
+  
 }
