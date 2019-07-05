@@ -11,7 +11,11 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatSidenavModule, MatToolbarModule, MatMenuModule, MatListModule, MatIconModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { SharedMaterialModule } from './shared/shared-material.module';
 

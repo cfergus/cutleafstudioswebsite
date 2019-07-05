@@ -7,7 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BladeAnglesRoutingModule } from './blade-angles-routing.module';
 
 import { SharedMaterialModule } from '../shared/shared-material.module';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { BladeAnglesComponent } from './blade-angles.component';
 import { HollowGrindComponent } from './hollow-grind/hollow-grind.component';

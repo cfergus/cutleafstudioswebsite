@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 
-import { MatIconRegistry } from '@angular/material';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
